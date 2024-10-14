@@ -19,7 +19,7 @@ def render_ui():
       [int(labels.matrix_10_entry.get()), int(labels.matrix_11_entry.get()), int(labels.matrix_12_entry.get())]
     )
     
-    result = matrix.cramer_calculate(vector)
+    result = matrix.cramer_method(vector)
     
     labels.result.configure(text=f"x = {result.get('x')}\ny = {result.get('y')}\nz = {result.get('z')}")
     
@@ -45,8 +45,11 @@ def render_console():
     
     result = matrix.cramer_method(vector)
     result2 = matrix.gauss_method(vector)
+    result3 = matrix.reverse_matrix_method(vector)
     print(f"\nОтвет по методу Крамера:\nx = {result.get('x')}\ny = {result.get('y')}\nz = {result.get('z')}")
     print(f"\nОтвет по методу Гаусса:\nx = {result2.get('x')}\ny = {result2.get('y')}\nz = {result2.get('z')}")
+    print(f"\nОтвет по методу Обратной матрицы:\nx = {result3.get('x')}\ny = {result3.get('y')}\nz = {result3.get('z')}")
+
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-ui", "--ui", required=False, default=False, action='store_true')
